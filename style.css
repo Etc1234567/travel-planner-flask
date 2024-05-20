@@ -1,0 +1,81 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+#tripName {
+    text-align: center;
+}
+
+.mainContent {
+    justify-content: space-between;
+}
+
+/* Nav CSS */
+.nav {
+    background-color: #cfecf7;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.nav-items {
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+/* Banner CSS */
+.countdown {
+    height: 10em;
+    background-image: url("assets/palm-trees.jpg");
+    background-size: cover;
+    background-position-y: 15em;
+    color: white;
+    text-align: center;
+}
+
+.countDownForm {
+    padding-top: 4em;
+}
+
+
+/* Weather Widget CSS */
+
+.weather img {
+    height: 5em;
+}
+
+.weather {
+    border: 1px solid black;
+    border-radius: 10%;
+    overflow: auto;
+    height: 20em;
+    width:fit-content;
+}
+
+/* Trip inspiration section */
+.tripInspiration {
+    display: block;
+    margin-left: 1em;
+}
+
+#tripinspo {
+    align-items: center;
+}
+
+/* Notes section */
+.information {
+    border: 1px solid black;
+    margin-top: 1em;
+}
+
+.itinerary {
+    flex: 3;
+}
+
+.notes {
+    flex: 1;
+}

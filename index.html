@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomad Nirvana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nav flex">
+        <h1>Nomad Nirvana</h1>
+        <ul class="flex nav-items">
+            <li>Wishlist</li>
+            <li>Upcoming Trips</li>
+            <li>Profile</li>
+            <li>Settings</li>
+            <li>Log Out</li>
+        </ul>
+    </div>
+
+    <div class="countdown">
+        <div class="countDownForm">
+            <label for="tripdate">Planning a trip? What's the date?: </label>
+            <input type="date" id="tripdate" name="tripdate" oninput="startCountdown(this)">
+        </div>
+    </div>
+
+    <h1 id="tripName">Costa Rica</h1>
+    <div class="mainContent flex">
+
+        <div class="weather">
+            <h2>10 Day Weather in San Jose, CR</h2>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain, Low 50/High 80</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+            <div class="flex">
+                <img src="assets/some_rain.png">
+                <p>Some rain</p>
+            </div>
+        </div>
+
+        <div class="tripInspiration">
+            <select name="tripinspo" id="tripinspo">
+                <option value="">--Select an inspiration video--</option>
+                <option value="mercadoCentral">Mercado Central</option>
+                <option value="monteverde">Monteverde</option>
+                <option value="laFortuna">La Fortuna</option>
+                <option value="puntaarenas">Puntarenas</option>
+                <option value="manuelAntonio">Manuel Antonio</option>
+                <option value="tortuguero">Tortuguero</option>
+                <option value="laselva">La Selva Biological Station</option>
+            </select>
+            <div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/S0mhveUZ1ZU?si=lc7OvZB3tt8ZVhc8"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>Insert cool caption here...</p>
+                <button type="button">Add more inspiration!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex information">
+        <div class="itinerary">
+            <h2>Itinerary: </h2>
+            <ul>
+                <li>Monday, 9/30: Mercado Central</li>
+                <li>Tuesday, 10/1: Isla Tortuga</li>
+            </ul>
+            <button type="button">Add to Itinerary</button>
+            <button type="button">Email Itinerary</button>
+        </div>
+        <div class="notes">
+            <div>
+                <h2>Notes: </h2>
+                <ul>
+                    <li>Get there EARLY for the Mercado and plan time in for the bus ride over!</li>
+                    <li>Find a nice beachfront restaurant for Isla Tortuga. Also, get a fresh coconut. Bring cash.</li>
+                </ul>
+                <button type="button">Add to Notes</button>
+            </div>
+            <div>
+                <h2>Helpful Links: </h2>
+                <ul>
+                    <li>southwest.com/deals</li>
+                    <li>ticaviajera.com/ideas</li>
+                </ul>
+                <button type="button">Add Link</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="widgets.js"></script>
+</body>
+
+</html>
