@@ -94,17 +94,21 @@ li img {
 /* Weather Widget CSS */
 
 .weather img {
-    height: 5em;
+    height: 3em;
 }
 
 .weather {
     border: 1px solid black;
-    border-radius: 10%;
     overflow: auto;
     height: 20em;
     width:fit-content;
     background-color: #2D2D2D;
     padding: 1em;
+}
+
+.weatheritems {
+    justify-content: space-around;
+    border: 1px solid white;
 }
 
 /* Trip inspiration section */
@@ -123,7 +127,6 @@ li img {
     border: 1px solid black;
     margin: 1em;
     background-color: #2D2D2D;
-    border-radius: 5%;
     padding: 1em;
 }
 
