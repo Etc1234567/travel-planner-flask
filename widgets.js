@@ -19,7 +19,7 @@ function startCountdown(element) {
         
         if (timeRemaining < 0) {
             clearInterval(timer);
-            banner.innerHTML = "It's here!";
+            banner.innerHTML = "<h1> Trip time! 🎉 </h1>";
         }
     }, 1000);
 
@@ -167,5 +167,9 @@ async function fetchWeather() {
 }
 
 function highlight(element) {
+    element.classList.add("bold");
+}
 
+function removeBold(element) {
+    element.classList.remove("bold");
 }
