@@ -33,7 +33,7 @@ async function fetchWeather() {
     var weatherCodes = [];
     var imgSrcs = [];
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 14; i++) {
 
         if (data.daily.weather_code[i] === 0) {
             weatherCodes.push("Clear sky");
@@ -77,93 +77,24 @@ async function fetchWeather() {
         }
     }
 
-    // using template literal to insert data from API
-    //for image, can insert <img src="${and insert API source here}">
     var weathersection = document.querySelector(".weather");
 
-    weathersection.innerHTML = `
-        <h2> 10 Day Weather in San Jose, CR </h2>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[0]} </p>
-                <img src=${imgSrcs[0]} alt="day 1 weather icon">
-                <div>
-                    <p>${weatherCodes[0]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[0])}°F, Low ${Math.round(data.daily.temperature_2m_min[0])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[1]} </p>
-                <img src=${imgSrcs[1]} alt="day 2 weather icon">
-                <div>
-                    <p>${weatherCodes[1]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[1])}°F, Low ${Math.round(data.daily.temperature_2m_min[1])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[2]} </p>
-                <img src=${imgSrcs[2]} alt="day 3 weather icon">
-                <div>
-                    <p>${weatherCodes[2]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[2])}°F, Low ${Math.round(data.daily.temperature_2m_min[2])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[3]} </p>
-                <img src=${imgSrcs[3]} alt="day 4 weather icon">
-                <div>
-                    <p>${weatherCodes[3]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[3])}°F, Low ${Math.round(data.daily.temperature_2m_min[3])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[4]} </p>
-                <img src=${imgSrcs[4]} alt="day 5 weather icon">
-                <div>
-                    <p>${weatherCodes[4]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[4])}°F, Low ${Math.round(data.daily.temperature_2m_min[4])}°F</p>
-                </div>   
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[5]} </p>
-                <img src=${imgSrcs[5]} alt="day 6 weather icon">
-                <div>
-                    <p>${weatherCodes[5]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[5])}°F, Low ${Math.round(data.daily.temperature_2m_min[5])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[6]} </p>
-                <img src=${imgSrcs[6]} alt="day 7 weather icon">
-                <div>
-                    <p>${weatherCodes[6]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[6])}°F, Low ${Math.round(data.daily.temperature_2m_min[6])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[7]} </p>
-                <img src=${imgSrcs[7]} alt="day 8 weather icon">
-                <div>
-                    <p>${weatherCodes[7]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[7])}°F, Low ${Math.round(data.daily.temperature_2m_min[7])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[8]} </p>
-                <img src=${imgSrcs[8]} alt="day 9 weather icon">
-                <div>
-                    <p>${weatherCodes[8]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[8])}°F, Low ${Math.round(data.daily.temperature_2m_min[8])}°F</p>
-                </div>
-            </div>
-            <div class="flex weatheritems">
-                <p> ${data.daily.time[9]} </p>
-                <img src=${imgSrcs[9]} alt="day 10 weather icon">
-                <div>
-                    <p>${weatherCodes[9]}</p>
-                    High ${Math.round(data.daily.temperature_2m_max[9])}°F, Low ${Math.round(data.daily.temperature_2m_min[9])}°F</p>
-                </div>
-            </div>
-    `
+    for (var i = 0; i < 14; i++) {
+        var newDiv = document.createElement("div");
+
+        newDiv.innerHTML = `
+            <p> ${data.daily.time[i]} </p>
+            <img src=${imgSrcs[i]} alt="day 1 weather icon">
+            <div>
+                <p>${weatherCodes[i]}</p>
+                High ${Math.round(data.daily.temperature_2m_max[i])}°F, Low ${Math.round(data.daily.temperature_2m_min[i])}°F</p>
+            </div>`
+
+        newDiv.classList.add("flex");
+        newDiv.classList.add("weatheritems");
+
+        weathersection.appendChild(newDiv);
+    }
 }
 
 function highlight(element) {
