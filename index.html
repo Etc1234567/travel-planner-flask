@@ -13,34 +13,34 @@
     <div class="nav flex">
         <h1 class="logo"><a href="#"> 🪷 Nomad Nirvana</a></h1>
         <ul class="flex nav-items">
-            <li onmouseover="highlight(this)" onmouseout="removeBold(this)"><a href="#">Wishlist</a></li>
-            <li onmouseover="highlight(this)" onmouseout="removeBold(this)"><a href="#">Upcoming Trips</a></li>
-            <li onmouseover="highlight(this)" onmouseout="removeBold(this)"> <a href="#"><img src="assets/gear.svg" alt="gear icon"></a></li>
-            <!-- <li> -->
+            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"><a href="#">Wishlist</a></li>
+            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"><a href="#">Upcoming Trips</a></li>
+            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"> 
+            <li>
+                <div class="dropdown">
+                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/gear.svg" alt="gear icon"></a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Appearance</a></li>
+                            <li><a class="dropdown-item" href="#">Privacy</a></li>
+                        </ul>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="profile-pic" src="assets/profile-pic.jpg" alt="profile image"></a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">My Past Trips</a></li>
+                            <li><a class="dropdown-item" href="#">View My Profile</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                </div>
             </li>
         </ul>
-        <div class="dropdown">
-            <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img id="profile-pic" src="assets/profile-pic.jpg" alt="profile image"></a>
-                <div class="dropdown-menu" aria-labelledby="profileMenu">
-                    <a class="dropdown-item" href="#">My Past Trips</a>
-                    <a class="dropdown-item" href="#">View My Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Log Out</a>
-                </div>
-        </div>
     </div>
-
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
 
     <div class="countdown">
         <div class="countDownForm">
@@ -165,12 +165,7 @@
     <script>
         window.onload = fetchWeather();
     </script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script> -->
+   
 </body>
 
 </html>

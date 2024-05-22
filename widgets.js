@@ -167,9 +167,9 @@ async function fetchWeather() {
 }
 
 function highlight(element) {
-    element.classList.add("bold");
+    element.classList.add("highlight");
 }
 
-function removeBold(element) {
-    element.classList.remove("bold");
+function removeHighlight(element) {
+    element.classList.remove("highlight");
 }

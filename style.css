@@ -3,9 +3,8 @@
     font-weight: normal;
 }
 
-.bold {
-    font-weight: bold;
-    font-size: 1.25em;
+.highlight {
+    text-decoration: underline;
 }
 
 body {
@@ -52,15 +51,15 @@ button {
 }
 
 .nav-items {
-    justify-content: space-around;
+    justify-content: space-evenly;
     list-style-type: none;
     font-size: 1.15em;
     align-items: center;
 }
 
 .nav-items li {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .logo {
