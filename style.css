@@ -132,17 +132,27 @@ li img {
 }
 
 /* Notes section */
-.information {
+
+.itinerary, .notes {
     border: 1px solid black;
     margin: 1em;
     background-color: #2D2D2D;
     padding: 1em;
+    overflow: auto;
+    height: 20em;
+    width:fit-content;
+    justify-self: center;
 }
 
-.itinerary {
-    flex: 2;
+.itDate {
+    color: teal;
+    size: 1em;
 }
 
-.notes {
-    flex: 1;
+.itHead {
+    justify-content: space-between;
+}
+
+.information {
+    justify-content: space-evenly;
 }

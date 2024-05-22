@@ -104,3 +104,44 @@ function highlight(element) {
 function removeHighlight(element) {
     element.classList.remove("highlight");
 }
+
+function addItinerary() {
+    var exampleItems = [
+        `<li><span class= "itDate">Wednesday, 9/25: La Fortuna </span>
+            <ul>
+                <li>8:30 am: Bus departs from main station to La Fortuna</li>
+                <li>1:00 pm: Arrival at La Fortuna</li>
+                <li>1:30 pm: Check into Baldi Hot Springs Hotel </li>
+                <li>2:00 pm: Grab lunch at local cafe</li>
+                <li>3:00 pm - 6:00pm: Explore town and shop</li>
+                <li>6:00 pm: Grab dinner and drinks at hotel and go relax in hot springs after dinner</li>
+            </ul></li>`,
+            `<li><span class="itDate">Thursday, 9/26: La Fortuna Day 2 </span>
+            <ul>
+                <li>9:00 am: Grab breakfast at hotel and relax in hot springs</li>
+                <li>11:00 am: Arrive in lobby for volcano tour</li>
+                <li>2:30 pm: Return from volcano tour and relax for rest of afternoon</li>
+                <li>4:00 pm: Check out of hotel</li>
+                <li>4:30 pm - 9:00pm: Bus ride back to capital</li>
+                <li>9:30 pm: Uber to hotel</li>
+            </ul></li>`,
+            `<li><span class= "itDate">Friday, 9/27: Puntaarenas</span>
+        <ul>
+            <li>7:30 am: Arrive at bus station to depart for Puntarenas</li>
+            <li>9:30 am: Arrive in Puntarenas and walk to beach</li>
+            <li>10:00 am - 5:00 pm: Enjoy the beach! </li>
+            <li>5:30 pm: Hop on bus to return to capital</li>
+            <li>7:30 pm: Return to capital and Uber to hotel</li>
+            <li>8:00 pm: Order dinner at hotel restaurant</li>
+        </ul></li>`, 
+    ]
+
+    var itinerary = document.querySelector(".itinerary");
+
+    
+    for (var i = 0; i < exampleItems.length; i++) {
+        var newDiv = document.createElement("div");
+        newDiv.innerHTML = exampleItems[i];
+        itinerary.appendChild(newDiv);
+    }
+}
