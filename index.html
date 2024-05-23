@@ -71,7 +71,6 @@
         <div class="tripInspiration">
             <div id="inspirationCarousel" class="carousel slide">
                 <div class="carousel-inner">
-                    <!-- If i is 0, add carousel-item active. Else, add carousel-item -->
                     <div class="carousel-item active">
                         <iframe width="560" height="315"
                             src="https://www.youtube.com/embed/S0mhveUZ1ZU?si=lc7OvZB3tt8ZVhc8"
@@ -137,34 +136,36 @@
         </div>
         <div class="notes rounded">
             <h1>Notes: </h1>
-            <ul>
-                <li>Resources
-                    <ul>
-                        <li>Hotels
-                            <ul>
-                                <li><a href="https://www.baldihotsprings.cr/?gad_source=1&gclid=CjwKCAjwr7ayBhAPEiwA6EIGxBsfda0sdYBqvX6YkO5r2fOqkzr0R3fsDSTRtlp9Tm27zNf-M9qWPBoC0DUQAvD_BwE" target="_blank">Baldi Hot Springs Site</a></li>
-                                <li><a href="https://hoteldontaco.com/" target="_blank">Don Taco Hotel</a></li>
-                                <li><a href="https://www.selina.com/costa-rica/" target="_blank">Selina Hostels</a></li>
-                                <li><a href="https://tropicalstudies.org/portfolio/la-selva-research-station/" target="_blank">La Selva Biological Station</a></li>
-                            </ul></li>
-                        <li>Travel Guides and Resources
-                            <ul>
-                                <li><a href="https://www.visitcostarica.com/en/costa-rica/things-to-do" target="_blank">Visit Costa Rica</a></li>
-                                <li><a href="https://explorerspassage.com/chronicles/costa-rica-travel/" target="_blank">Ultimate Travel Guide</a></li>
-                                <li><a href="https://www.audleytravel.com/us/costa-rica/best-time-to-visit#may-jun" target="_blank">Climate Guide</a></li>
-                            </ul></li>
-                        <li>Restaurants to Try
-                            <ul>
-                                <li>Little Tina Coffee Shop</li>
-                                <li>La Panaderia (Calle 8)</li>
-                                <li>Soda del Barrio</li>
-                                <li>Le Petite France</li>
-                            </ul></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+            <div class="noteContent">
+                <ul>
+                    <li>Resources
+                        <ul>
+                            <li>Hotels
+                                <ul>
+                                    <li><a href="https://www.baldihotsprings.cr/?gad_source=1&gclid=CjwKCAjwr7ayBhAPEiwA6EIGxBsfda0sdYBqvX6YkO5r2fOqkzr0R3fsDSTRtlp9Tm27zNf-M9qWPBoC0DUQAvD_BwE" target="_blank">Baldi Hot Springs Site</a></li>
+                                    <li><a href="https://hoteldontaco.com/" target="_blank">Don Taco Hotel</a></li>
+                                    <li><a href="https://www.selina.com/costa-rica/" target="_blank">Selina Hostels</a></li>
+                                    <li><a href="https://tropicalstudies.org/portfolio/la-selva-research-station/" target="_blank">La Selva Biological Station</a></li>
+                                </ul></li>
+                                <li>Travel Guides and Resources
+                                    <ul>
+                                        <li><a href="https://www.visitcostarica.com/en/costa-rica/things-to-do" target="_blank">Visit Costa Rica</a></li>
+                                        <li><a href="https://explorerspassage.com/chronicles/costa-rica-travel/" target="_blank">Ultimate Travel Guide</a></li>
+                                        <li><a href="https://www.audleytravel.com/us/costa-rica/best-time-to-visit#may-jun" target="_blank">Climate Guide</a></li>
+                                    </ul></li>
+                                    <li>Restaurants to Try
+                                        <ul>
+                                            <li>Little Tina Coffee Shop</li>
+                                            <li>La Panaderia (Calle 8)</li>
+                                            <li>Soda del Barrio</li>
+                                            <li>Le Petite France</li>
+                                        </ul></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
     <div class="flex information">
         <div class="itinerary rounded">
             <div class="flex itHead">
@@ -205,6 +206,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="widgets.js"></script>
+    <script src="displaytrip.js"></script>
     <script>
         window.onload = fetchWeather();
     </script>

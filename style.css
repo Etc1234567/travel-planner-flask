@@ -161,3 +161,7 @@ li img {
 .hidden {
     display: none;
 }
+
+.noteContent {
+    width: 22em;
+}
