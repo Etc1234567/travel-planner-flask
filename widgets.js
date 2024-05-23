@@ -27,7 +27,28 @@ function startCountdown(element) {
 
 async function fetchWeather() {
 
-    var response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=9.9333&longitude=-84.0833&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14");
+    var KClink = "https://api.open-meteo.com/v1/forecast?latitude=39.0997&longitude=-94.5786&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+    var CRlink = "https://api.open-meteo.com/v1/forecast?latitude=9.9333&longitude=-84.0833&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+    var swissLink = "https://api.open-meteo.com/v1/forecast?latitude=47.0505&longitude=8.3064&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+   
+    var weathersection = document.querySelector(".weatherinfo");
+    var tripName = document.querySelector(".tripName");
+
+    weathersection.innerHTML = "";
+    
+    if (tripName.innerHTML === "San José, Costa Rica 🇨🇷"){
+        var apilink = "https://api.open-meteo.com/v1/forecast?latitude=9.9333&longitude=-84.0833&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+    }
+
+    else if (tripName.innerHTML === "Lucerne, Switzerland 🇨🇭"){
+        var apilink = "https://api.open-meteo.com/v1/forecast?latitude=47.0505&longitude=8.3064&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+    }
+
+    else if (tripName.innerHTML === "Kansas City, USA 🇺🇸"){
+        var apilink = "https://api.open-meteo.com/v1/forecast?latitude=39.0997&longitude=-94.5786&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14";
+    }
+
+    var response = await fetch (apilink);
     var data = await response.json();
 
     var weatherCodes = [];
@@ -42,9 +63,17 @@ async function fetchWeather() {
                 break;
 
             case 1:
+                weatherCodes.push("Mainly clear");
+                imgSrcs.push("assets/sun.svg");
+                break;
+
             case 2:
+                weatherCodes.push("Partly cloudy");
+                imgSrcs.push("assets/cloud.svg");
+                break;
+
             case 3:
-                weatherCodes.push("Some clouds");
+                weatherCodes.push("Overcast");
                 imgSrcs.push("assets/cloud.svg");
                 break;
 
@@ -55,6 +84,10 @@ async function fetchWeather() {
                 break;
 
             case 51:
+                weatherCodes.push("Light drizzle");
+                imgSrcs.push("assets/cloud-drizzle.svg");
+                break;
+
             case 53:
             case 55:
                 weatherCodes.push("Drizzling");
@@ -68,9 +101,18 @@ async function fetchWeather() {
                 break;
             
             case 61:
+                weatherCodes.push("Light rain");
+                imgSrcs.push("assets/cloud-rain.svg");
+                break;
+
             case 63:
+                weatherCodes.push("Moderate rain");
+                imgSrcs.push("assets/cloud-rain.svg");
+                break;
+
             case 65:
-                weatherCodes.push("Rain");
+            case 82:
+                weatherCodes.push("Heavy rain");
                 imgSrcs.push("assets/cloud-rain.svg");
                 break;
             
@@ -81,19 +123,34 @@ async function fetchWeather() {
                 break;
 
             case 71:
-            case 73:
-            case 75:
             case 77:
+                weatherCodes.push("Light snow");
+                imgSrcs.push("assets/cloud-snow.svg");
+                break;
+
+            case 73:
+                weatherCodes.push("Moderate snow");
+                imgSrcs.push("assets/cloud-snow.svg");
+                break;
+
+            case 75:
+                weatherCodes.push("Heavy snow");
+                imgSrcs.push("assets/cloud-snow.svg");
+                break;
+
             case 85:
             case 86:
-                weatherCodes.push("Snow");
+                weatherCodes.push("Snow flurries");
                 imgSrcs.push("assets/cloud-snow.svg");
                 break;
 
             case 80:
+                weatherCodes.push("Some rain showers");
+                imgSrcs.push("assets/cloud-rain.svg");
+                break;
+
             case 81:
-            case 82:
-                weatherCodes.push("Rain showers");
+                weatherCodes.push("Moderate rain showers");
                 imgSrcs.push("assets/cloud-rain.svg");
                 break;
 
@@ -108,8 +165,6 @@ async function fetchWeather() {
                 console.log("There was an error with the weather API.");
         }
     }
-
-    var weathersection = document.querySelector(".weather");
 
     for (var i = 0; i < 14; i++) {
         var newDiv = document.createElement("div");
@@ -175,5 +230,43 @@ function addItinerary() {
         var newDiv = document.createElement("div");
         newDiv.innerHTML = exampleItems[i];
         itinerary.appendChild(newDiv);
+    }
+}
+
+function displayTrip(element) {
+    var crTab = document.querySelector("#cr");
+    var swissTab = document.querySelector("#switzerland");
+    var tripName = document.querySelector(".tripName");
+    var KCtab = document.querySelector("#kc");
+    var weatherHead = document.querySelector("#weatherHead");
+
+    if (element.id === "kc") {
+        swissTab.classList.remove("hidden");
+        crTab.classList.remove("hidden");
+        element.classList.add("hidden");
+
+        tripName.innerHTML = ("Kansas City, USA 🇺🇸");
+        weatherHead.innerHTML = "14 Day Forecast in Kansas City, USA";
+        fetchWeather();
+    }
+    else if (element.id === "switzerland") {
+        KCtab.classList.remove("hidden");
+        crTab.classList.remove("hidden");
+        element.classList.add("hidden");
+
+        tripName.innerHTML = ("Lucerne, Switzerland 🇨🇭");
+
+        weatherHead.innerHTML = "14 Day Forecast in Lucerne, Switzerland";
+        fetchWeather();
+    }
+
+    else if (element.id === "cr") {
+        KCtab.classList.remove("hidden");
+        swissTab.classList.remove("hidden");
+        element.classList.add("hidden");
+
+        tripName.innerHTML = ("San José, Costa Rica 🇨🇷");
+        weatherHead.innerHTML = "14 Day Forecast in San José, CR";
+        fetchWeather();
     }
 }

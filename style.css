@@ -17,7 +17,7 @@ body {
     align-items: center;
 }
 
-#tripName {
+.tripName {
     text-align: center;
     margin-bottom: 1em;
 }
@@ -155,4 +155,9 @@ li img {
 
 .information {
     justify-content: space-evenly;
+}
+
+/* Responsive CSS */
+.hidden {
+    display: none;
 }
