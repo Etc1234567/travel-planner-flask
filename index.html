@@ -14,8 +14,16 @@
         <h1 class="logo"><a href="#"> 🪷 Nomad Nirvana</a></h1>
         <ul class="flex nav-items">
             <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"><a href="#">Wishlist</a></li>
-            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"><a href="#">Upcoming Trips</a></li>
-            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"> 
+            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)">
+                <div class="dropdown">
+                    <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Upcoming Trips</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Stockholm, Sweden</a></li>
+                            <li><a class="dropdown-item" href="#">Kansas City, USA</a></li>
+                        </ul>
+                </div>
+            </li> 
+
             <li>
                 <div class="dropdown">
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,6 +67,7 @@
         <div class="tripInspiration">
             <div id="inspirationCarousel" class="carousel slide">
                 <div class="carousel-inner">
+                    <!-- If i is 0, add carousel-item active. Else, add carousel-item -->
                     <div class="carousel-item active">
                         <iframe width="560" height="315"
                             src="https://www.youtube.com/embed/S0mhveUZ1ZU?si=lc7OvZB3tt8ZVhc8"
@@ -129,16 +138,16 @@
                     <ul>
                         <li>Hotels
                             <ul>
-                                <li><a href="https://www.baldihotsprings.cr/?gad_source=1&gclid=CjwKCAjwr7ayBhAPEiwA6EIGxBsfda0sdYBqvX6YkO5r2fOqkzr0R3fsDSTRtlp9Tm27zNf-M9qWPBoC0DUQAvD_BwE">Baldi Hot Springs Site</a></li>
-                                <li><a href="https://hoteldontaco.com/">Don Taco Hotel</a></li>
-                                <li><a href="https://www.selina.com/costa-rica/">Selina Hostels</a></li>
-                                <li><a href="https://tropicalstudies.org/portfolio/la-selva-research-station/">La Selva Biological Station</a></li>
+                                <li><a href="https://www.baldihotsprings.cr/?gad_source=1&gclid=CjwKCAjwr7ayBhAPEiwA6EIGxBsfda0sdYBqvX6YkO5r2fOqkzr0R3fsDSTRtlp9Tm27zNf-M9qWPBoC0DUQAvD_BwE" target="_blank">Baldi Hot Springs Site</a></li>
+                                <li><a href="https://hoteldontaco.com/" target="_blank">Don Taco Hotel</a></li>
+                                <li><a href="https://www.selina.com/costa-rica/" target="_blank">Selina Hostels</a></li>
+                                <li><a href="https://tropicalstudies.org/portfolio/la-selva-research-station/" target="_blank">La Selva Biological Station</a></li>
                             </ul></li>
                         <li>Travel Guides and Resources
                             <ul>
-                                <li><a href="https://www.visitcostarica.com/en/costa-rica/things-to-do">Visit Costa Rica</a></li>
-                                <li><a href="https://explorerspassage.com/chronicles/costa-rica-travel/">Ultimate Travel Guide</a></li>
-                                <li><a href="https://www.audleytravel.com/us/costa-rica/best-time-to-visit#may-jun">Climate Guide</a></li>
+                                <li><a href="https://www.visitcostarica.com/en/costa-rica/things-to-do" target="_blank">Visit Costa Rica</a></li>
+                                <li><a href="https://explorerspassage.com/chronicles/costa-rica-travel/" target="_blank">Ultimate Travel Guide</a></li>
+                                <li><a href="https://www.audleytravel.com/us/costa-rica/best-time-to-visit#may-jun" target="_blank">Climate Guide</a></li>
                             </ul></li>
                         <li>Restaurants to Try
                             <ul>

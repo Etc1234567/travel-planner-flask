@@ -35,45 +35,77 @@ async function fetchWeather() {
 
     for (i = 0; i < 14; i++) {
 
-        if (data.daily.weather_code[i] === 0) {
-            weatherCodes.push("Clear sky");
-            imgSrcs.push("assets/sun.svg");
-        }
-        if (data.daily.weather_code[i] === 1 || data.daily.weather_code[i] === 2 || data.daily.weather_code[i] === 3) {
-            weatherCodes.push("Some clouds");
-            imgSrcs.push("assets/cloud.svg");
-        }
-        if (data.daily.weather_code[i] === 45 || data.daily.weather_code[i] === 48) {
-            weatherCodes.push("Fog");
-            imgSrcs.push("assets/cloud-fog.svg");
-        }
-        if (data.daily.weather_code[i] === 51 || data.daily.weather_code[i] === 53 || data.daily.weather_code[i] === 55) {
-            weatherCodes.push("Drizzling");
-            imgSrcs.push("assets/cloud-drizzle.svg");
-        }
-        if (data.daily.weather_code[i] === 56 || data.daily.weather_code[i] === 57) {
-            weatherCodes.push("Freezing drizzle");
-            imgSrcs.push("assets/cloud-sleet.svg");
-        }
-        if (data.daily.weather_code[i] === 61 || data.daily.weather_code[i] === 63 || data.daily.weather_code[i] === 65) {
-            weatherCodes.push("Rain");
-            imgSrcs.push("assets/cloud-rain.svg");
-        }
-        if (data.daily.weather_code[i] === 66 || data.daily.weather_code[i] === 67) {
-            weatherCodes.push("Freezing rain");
-            imgSrcs.push("assets/cloud-sleet.svg");
-        }
-        if (data.daily.weather_code[i] === 71 || data.daily.weather_code[i] === 73 || data.daily.weather_code[i] === 75 || data.daily.weather_code[i] === 77 || data.daily.weather_code[i] === 85 || data.daily.weather_code[i] === 86) {
-            weatherCodes.push("Snow");
-            imgSrcs.push("assets/cloud-snow.svg");
-        }
-        if (data.daily.weather_code[i] === 80 || data.daily.weather_code[i] === 81 || data.daily.weather_code[i] === 82) {
-            weatherCodes.push("Rain showers");
-            imgSrcs.push("assets/cloud-rain.svg");
-        }
-        if (data.daily.weather_code[i] === 95 || data.daily.weather_code[i] === 96 || data.daily.weather_code[i] === 99) {
-            weatherCodes.push("Thunderstorms");
-            imgSrcs.push("assets/cloud-lightning-rain.svg");
+        switch (data.daily.weather_code[i]) {
+            case 0:
+                weatherCodes.push("Clear sky");
+                imgSrcs.push("assets/sun.svg");
+                break;
+
+            case 1:
+            case 2:
+            case 3:
+                weatherCodes.push("Some clouds");
+                imgSrcs.push("assets/cloud.svg");
+                break;
+
+            case 45:
+            case 48:
+                weatherCodes.push("Fog");
+                imgSrcs.push("assets/cloud-fog.svg");
+                break;
+
+            case 51:
+            case 53:
+            case 55:
+                weatherCodes.push("Drizzling");
+                imgSrcs.push("assets/cloud-drizzle.svg");
+                break;
+
+            case 56:
+            case 57:
+                weatherCodes.push("Freezing drizzle");
+                imgSrcs.push("assets/cloud-sleet.svg");
+                break;
+            
+            case 61:
+            case 63:
+            case 65:
+                weatherCodes.push("Rain");
+                imgSrcs.push("assets/cloud-rain.svg");
+                break;
+            
+            case 66:
+            case 67:
+                weatherCodes.push("Freezing rain");
+                imgSrcs.push("assets/cloud-sleet.svg");
+                break;
+
+            case 71:
+            case 73:
+            case 75:
+            case 77:
+            case 85:
+            case 86:
+                weatherCodes.push("Snow");
+                imgSrcs.push("assets/cloud-snow.svg");
+                break;
+
+            case 80:
+            case 81:
+            case 82:
+                weatherCodes.push("Rain showers");
+                imgSrcs.push("assets/cloud-rain.svg");
+                break;
+
+            case 95:
+            case 96:
+            case 99:
+                weatherCodes.push("Thunderstorms");
+                imgSrcs.push("assets/cloud-lightning-rain.svg");
+                break;
+            
+            default:
+                console.log("There was an error with the weather API.");
         }
     }
 
