@@ -3,6 +3,10 @@
     font-weight: normal;
 }
 
+.bg-palm {
+    background-image: url("palm-trees.jpg");
+}
+
 .highlight {
     text-decoration: underline;
 }
@@ -15,6 +19,12 @@ body {
 .flex {
     display: flex;
     align-items: center;
+}
+
+.flexStart {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 5em;
 }
 
 .tripName {
@@ -81,9 +91,9 @@ li img {
 /* Banner CSS */
 .countdown {
     height: 10em;
-    background-image: url("assets/palm-trees.jpg");
+    background-image: url("palm-trees.jpg");
     background-size: cover;
-    background-position-y: 15em;
+    background-position-y: 30em;
     color: white;
     text-align: center;
     margin-bottom: 1em;
@@ -164,4 +174,24 @@ li img {
 
 .noteContent {
     width: 22em;
+}
+
+/* Form CSS */
+.userForm {
+    width: 25em;
+    padding: 1em;
+}
+
+#register, #login, #addTrip {
+    text-align: center;
+    padding-top: .5em;
+}
+
+.text-danger {
+    text-align: center;
+}
+
+.fit {
+    width: fit-content;
+    margin-top: 5em;
 }

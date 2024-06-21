@@ -59,106 +59,106 @@ async function fetchWeather() {
         switch (data.daily.weather_code[i]) {
             case 0:
                 weatherCodes.push("Clear sky");
-                imgSrcs.push("assets/sun.svg");
+                imgSrcs.push("/static/assets/sun.svg");
                 break;
 
             case 1:
                 weatherCodes.push("Mainly clear");
-                imgSrcs.push("assets/sun.svg");
+                imgSrcs.push("/static/assets/sun.svg");
                 break;
 
             case 2:
                 weatherCodes.push("Partly cloudy");
-                imgSrcs.push("assets/cloud.svg");
+                imgSrcs.push("/static/assets/cloud.svg");
                 break;
 
             case 3:
                 weatherCodes.push("Overcast");
-                imgSrcs.push("assets/cloud.svg");
+                imgSrcs.push("/static/assets/cloud.svg");
                 break;
 
             case 45:
             case 48:
                 weatherCodes.push("Fog");
-                imgSrcs.push("assets/cloud-fog.svg");
+                imgSrcs.push("/static/assets/cloud-fog.svg");
                 break;
 
             case 51:
                 weatherCodes.push("Light drizzle");
-                imgSrcs.push("assets/cloud-drizzle.svg");
+                imgSrcs.push("/static/assets/cloud-drizzle.svg");
                 break;
 
             case 53:
             case 55:
                 weatherCodes.push("Drizzling");
-                imgSrcs.push("assets/cloud-drizzle.svg");
+                imgSrcs.push("/static/assets/cloud-drizzle.svg");
                 break;
 
             case 56:
             case 57:
                 weatherCodes.push("Freezing drizzle");
-                imgSrcs.push("assets/cloud-sleet.svg");
+                imgSrcs.push("/static/assets/cloud-sleet.svg");
                 break;
             
             case 61:
                 weatherCodes.push("Light rain");
-                imgSrcs.push("assets/cloud-rain.svg");
+                imgSrcs.push("/static/assets/cloud-rain.svg");
                 break;
 
             case 63:
                 weatherCodes.push("Moderate rain");
-                imgSrcs.push("assets/cloud-rain.svg");
+                imgSrcs.push("/static/assets/cloud-rain.svg");
                 break;
 
             case 65:
             case 82:
                 weatherCodes.push("Heavy rain");
-                imgSrcs.push("assets/cloud-rain.svg");
+                imgSrcs.push("/static/assets/cloud-rain.svg");
                 break;
             
             case 66:
             case 67:
                 weatherCodes.push("Freezing rain");
-                imgSrcs.push("assets/cloud-sleet.svg");
+                imgSrcs.push("/static/assets/cloud-sleet.svg");
                 break;
 
             case 71:
             case 77:
                 weatherCodes.push("Light snow");
-                imgSrcs.push("assets/cloud-snow.svg");
+                imgSrcs.push("/static/assets/cloud-snow.svg");
                 break;
 
             case 73:
                 weatherCodes.push("Moderate snow");
-                imgSrcs.push("assets/cloud-snow.svg");
+                imgSrcs.push("/static/assets/cloud-snow.svg");
                 break;
 
             case 75:
                 weatherCodes.push("Heavy snow");
-                imgSrcs.push("assets/cloud-snow.svg");
+                imgSrcs.push("/static/assets/cloud-snow.svg");
                 break;
 
             case 85:
             case 86:
                 weatherCodes.push("Snow flurries");
-                imgSrcs.push("assets/cloud-snow.svg");
+                imgSrcs.push("/static/assets/cloud-snow.svg");
                 break;
 
             case 80:
                 weatherCodes.push("Some rain showers");
-                imgSrcs.push("assets/cloud-rain.svg");
+                imgSrcs.push("/static/assets/cloud-rain.svg");
                 break;
 
             case 81:
                 weatherCodes.push("Moderate rain showers");
-                imgSrcs.push("assets/cloud-rain.svg");
+                imgSrcs.push("/static/assets/cloud-rain.svg");
                 break;
 
             case 95:
             case 96:
             case 99:
                 weatherCodes.push("Thunderstorms");
-                imgSrcs.push("assets/cloud-lightning-rain.svg");
+                imgSrcs.push("/static/assets/cloud-lightning-rain.svg");
                 break;
             
             default:
