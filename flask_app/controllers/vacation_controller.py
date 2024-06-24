@@ -37,8 +37,10 @@ def process_view_trip(vacation_id):
     }
     
     this_vacation = vacation_model.Vacation.get_one(data)
+
+    vacations = vacation_model.Vacation.get_all()
     
-    return render_template("trip_dashboard.html", this_vacation=this_vacation)
+    return render_template("trip_dashboard.html", this_vacation=this_vacation, vacations=vacations)
 
 @app.route("/trip/delete/<int:vacation_id>")
 def delete_trip(vacation_id):

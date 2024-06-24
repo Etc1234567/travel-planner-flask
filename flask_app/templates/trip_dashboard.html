@@ -18,9 +18,9 @@
                 <div class="dropdown">
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Upcoming Trips</a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" id="switzerland" href="#" onclick="displayTrip(this)">Lucerne, Switzerland</a></li>
+                            <!-- <li><a class="dropdown-item" id="switzerland" href="#" onclick="displayTrip(this)">Lucerne, Switzerland</a></li>
                             <li><a class="dropdown-item" id="kc" href="#" onclick="displayTrip(this)">Kansas City, USA</a></li>
-                            <li><a class="dropdown-item hidden" id="cr" href="#" onclick="displayTrip(this)">San José, Costa Rica</a></li>
+                            <li><a class="dropdown-item hidden" id="cr" href="#" onclick="displayTrip(this)">San José, Costa Rica</a></li> -->
                             {% for vacation in vacations %}
                                 <li><a class="dropdown-item" href="/trip/view/{{vacation.id}}">{{vacation.city}}, {{vacation.country}}</a></li>
                             {% endfor %}
@@ -235,7 +235,158 @@
                 }
         )}
     </script>
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/fetchweather.js') }}"></script>
+    <script>
+        async function fetchWeather() {
+
+            var latLongLink = "https://geocoding-api.open-meteo.com/v1/search?name={{this_vacation.city}},{{this_vacation.country}}&count=10&language=en&format=json"
+            var response = await fetch(latLongLink)
+            var data = await response.json();
+
+            var latitude = data["results"][0].latitude;
+            var longitude = data["results"][0].longitude;
+            
+            var weathersection = document.querySelector(".weatherinfo");
+            weathersection.innerHTML = "";
+
+            "https://api.open-meteo.com/v1/forecast?latitude=39.0997&longitude=-94.5786&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14"
+            apiLink = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto&forecast_days=14"
+
+            var response = await fetch(apiLink);
+            var data = await response.json();
+
+            var weatherCodes = [];
+            var imgSrcs = [];
+
+            for (i = 0; i < 14; i++) {
+
+                switch (data.daily.weather_code[i]) {
+                    case 0:
+                        weatherCodes.push("Clear sky");
+                        imgSrcs.push("/static/assets/sun.svg");
+                        break;
+
+                    case 1:
+                        weatherCodes.push("Mainly clear");
+                        imgSrcs.push("/static/assets/sun.svg");
+                        break;
+
+                    case 2:
+                        weatherCodes.push("Partly cloudy");
+                        imgSrcs.push("/static/assets/cloud.svg");
+                        break;
+
+                    case 3:
+                        weatherCodes.push("Overcast");
+                        imgSrcs.push("/static/assets/cloud.svg");
+                        break;
+
+                    case 45:
+                    case 48:
+                        weatherCodes.push("Fog");
+                        imgSrcs.push("/static/assets/cloud-fog.svg");
+                        break;
+
+                    case 51:
+                        weatherCodes.push("Light drizzle");
+                        imgSrcs.push("/static/assets/cloud-drizzle.svg");
+                        break;
+
+                    case 53:
+                    case 55:
+                        weatherCodes.push("Drizzling");
+                        imgSrcs.push("/static/assets/cloud-drizzle.svg");
+                        break;
+
+                    case 56:
+                    case 57:
+                        weatherCodes.push("Freezing drizzle");
+                        imgSrcs.push("/static/assets/cloud-sleet.svg");
+                        break;
+                    
+                    case 61:
+                        weatherCodes.push("Light rain");
+                        imgSrcs.push("/static/assets/cloud-rain.svg");
+                        break;
+
+                    case 63:
+                        weatherCodes.push("Moderate rain");
+                        imgSrcs.push("/static/assets/cloud-rain.svg");
+                        break;
+
+                    case 65:
+                    case 82:
+                        weatherCodes.push("Heavy rain");
+                        imgSrcs.push("/static/assets/cloud-rain.svg");
+                        break;
+                    
+                    case 66:
+                    case 67:
+                        weatherCodes.push("Freezing rain");
+                        imgSrcs.push("/static/assets/cloud-sleet.svg");
+                        break;
+
+                    case 71:
+                    case 77:
+                        weatherCodes.push("Light snow");
+                        imgSrcs.push("/static/assets/cloud-snow.svg");
+                        break;
+
+                    case 73:
+                        weatherCodes.push("Moderate snow");
+                        imgSrcs.push("/static/assets/cloud-snow.svg");
+                        break;
+
+                    case 75:
+                        weatherCodes.push("Heavy snow");
+                        imgSrcs.push("/static/assets/cloud-snow.svg");
+                        break;
+
+                    case 85:
+                    case 86:
+                        weatherCodes.push("Snow flurries");
+                        imgSrcs.push("/static/assets/cloud-snow.svg");
+                        break;
+
+                    case 80:
+                        weatherCodes.push("Some rain showers");
+                        imgSrcs.push("/static/assets/cloud-rain.svg");
+                        break;
+
+                    case 81:
+                        weatherCodes.push("Moderate rain showers");
+                        imgSrcs.push("/static/assets/cloud-rain.svg");
+                        break;
+
+                    case 95:
+                    case 96:
+                    case 99:
+                        weatherCodes.push("Thunderstorms");
+                        imgSrcs.push("/static/assets/cloud-lightning-rain.svg");
+                        break;
+                    
+                    default:
+                        console.log("There was an error with the weather API.");
+                }
+            }
+
+            for (var i = 0; i < 14; i++) {
+                var newDiv = document.createElement("div");
+
+                newDiv.innerHTML = `
+                    <p> ${data.daily.time[i]} </p>
+                    <img src=${imgSrcs[i]} alt="day 1 weather icon">
+                    <div>
+                        <p>${weatherCodes[i]}</p>
+                        High ${Math.round(data.daily.temperature_2m_max[i])}°F, Low ${Math.round(data.daily.temperature_2m_min[i])}°F</p>
+                    </div>`
+
+                newDiv.classList.add("flex");
+                newDiv.classList.add("weatheritems");
+
+                weathersection.appendChild(newDiv);
+            }
+        }
+    </script>
     <script type="text/javascript" src="{{ url_for('static', filename='/js/displaytrip.js') }}"></script>
     <script>
         window.onload = startCountdown();
