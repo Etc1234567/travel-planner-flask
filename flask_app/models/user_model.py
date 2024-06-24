@@ -42,6 +42,15 @@ class User:
         if result:
             return cls(result[0])
         return False
+    
+    @classmethod
+    def get_by_username(cls,data):
+        query = "SELECT * FROM nomadnirvana.users WHERE users.username = %(username)s;"
+        result = connect_to_mysql(DATABASE).query_db(query,data)
+        
+        if result:
+            return cls(result[0])
+        return False
 
     @staticmethod
     def validate_user(data):
@@ -51,7 +60,11 @@ class User:
             flash("Username must be at least 2 characters.", "reg")
             is_valid = False
 
-        # add check for username not being taken
+        else:
+            potential_user = User.get_by_username({'username': data['username']})
+            if potential_user:
+                is_valid = False
+                flash("This username is taken", 'reg')
         
         if len(data['email']) < 6:
             flash("Email must be at least 6 characters.", "reg")

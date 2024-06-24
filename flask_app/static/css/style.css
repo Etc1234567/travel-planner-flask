@@ -3,6 +3,10 @@
     font-weight: normal;
 }
 
+.center {
+    text-align: center;
+}
+
 .bg-palm {
     background-image: url("palm-trees.jpg");
 }

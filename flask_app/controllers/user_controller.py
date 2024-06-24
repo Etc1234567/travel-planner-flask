@@ -1,18 +1,24 @@
 from flask_app import app
 from flask import render_template, request, session, redirect, flash
 from flask_app.models import user_model
+from flask_app.models import vacation_model
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
-    # if "user_id" in session:
-    #    return redirect('/dashboard')
+    if "user_id" in session:
+       return redirect('/dashboard')
     return render_template("loginreg.html")
 
 @app.route('/dashboard')
 def render_dashboard():
-    return render_template("dashboard.html")
+    if "user_id" not in session:
+        return redirect("/")
+    
+    vacations = vacation_model.Vacation.get_all()
+
+    return render_template("dashboard.html", vacations=vacations)
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -49,3 +55,8 @@ def login():
     session['user_id'] = potential_user.id
 
     return redirect("/dashboard")
+
+@app.route("/logout")
+def log_out():
+    del session['user_id']
+    return redirect("/")

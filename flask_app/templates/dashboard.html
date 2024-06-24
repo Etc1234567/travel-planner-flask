@@ -17,10 +17,11 @@
             <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)">
                 <div class="dropdown">
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Upcoming Trips</a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" id="switzerland" href="#" onclick="displayTrip(this)">Lucerne, Switzerland</a></li>
-                            <li><a class="dropdown-item" id="kc" href="#" onclick="displayTrip(this)">Kansas City, USA</a></li>
-                            <li><a class="dropdown-item hidden" id="cr" href="#" onclick="displayTrip(this)">San José, Costa Rica</a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark" id="vacationList">
+                            {% for vacation in vacations %}
+                                <li><a class="dropdown-item" href="/trip/view/{{vacation.id}}">{{vacation.city}}, {{vacation.country}}</a></li>
+                            {% endfor %}
+                            <li><a class="dropdown-item" href="/trip/add">Add a Trip</a></li>
                         </ul>
                 </div>
             </li> 
@@ -44,7 +45,7 @@
                             <li><a class="dropdown-item" href="#">My Past Trips</a></li>
                             <li><a class="dropdown-item" href="#">View My Profile</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
                         </ul>
                 </div>
             </li>
@@ -52,166 +53,32 @@
     </div>
 
     <div class="countdown">
-        <div class="countDownForm">
-            <label for="tripdate">Planning a trip? What's the date?: </label>
-            <input type="date" id="tripdate" name="tripdate" oninput="startCountdown(this)">
-        </div>
+        <h1>Welcome to Nomad Nirvana!</h1>
     </div>
 
-    <h1 class="tripName">San José, Costa Rica 🇨🇷</h1>
-
-    <div class="mainContent flex">
-
-        <div class="weather rounded">
-            <h2 id="weatherHead">14 Day Forecast in San José, CR</h2>
-            <div class="weatherinfo">
-            </div>
-        </div>
-
-        <div class="tripInspiration">
-            <div id="inspirationCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/S0mhveUZ1ZU?si=lc7OvZB3tt8ZVhc8"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/h9k9ngY-tNI?si=A2uaER9oQ2Q5Gk13"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/ZvdacwdQI7k?si=Em7Fiu5C0S_5G_g-"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/tw26GEi5VM8?si=Tf79JmDLivHU_7XM"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/XMGf9qtD3lI?si=2Urs_B819Vj6upOg"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/SIqrD_brIVQ?si=qIbkj6pUzf3ixtyq"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="carousel-item">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/cwmR6F5gfJg?si=yNvcyCNbcM1WcxwF"
-                            title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="carousel-indicators">
-                    <button type="button" class="active" data-bs-target="#inspirationCarousel"
-                        data-bs-slide-to="0"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="2"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="3"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="4"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="5"></button>
-                    <button type="button" data-bs-target="#inspirationCarousel" data-bs-slide-to="6"></button>
-                </div>
-            </div>
-        </div>
-        <div class="notes rounded">
-            <h1>Notes: </h1>
-            <div class="noteContent">
-                <ul>
-                    <li>Resources
-                        <ul>
-                            <li>Hotels
-                                <ul>
-                                    <li><a href="https://www.baldihotsprings.cr/?gad_source=1&gclid=CjwKCAjwr7ayBhAPEiwA6EIGxBsfda0sdYBqvX6YkO5r2fOqkzr0R3fsDSTRtlp9Tm27zNf-M9qWPBoC0DUQAvD_BwE" target="_blank">Baldi Hot Springs Site</a></li>
-                                    <li><a href="https://hoteldontaco.com/" target="_blank">Don Taco Hotel</a></li>
-                                    <li><a href="https://www.selina.com/costa-rica/" target="_blank">Selina Hostels</a></li>
-                                    <li><a href="https://tropicalstudies.org/portfolio/la-selva-research-station/" target="_blank">La Selva Biological Station</a></li>
-                                </ul></li>
-                                <li>Travel Guides and Resources
-                                    <ul>
-                                        <li><a href="https://www.visitcostarica.com/en/costa-rica/things-to-do" target="_blank">Visit Costa Rica</a></li>
-                                        <li><a href="https://explorerspassage.com/chronicles/costa-rica-travel/" target="_blank">Ultimate Travel Guide</a></li>
-                                        <li><a href="https://www.audleytravel.com/us/costa-rica/best-time-to-visit#may-jun" target="_blank">Climate Guide</a></li>
-                                    </ul></li>
-                                    <li>Restaurants to Try
-                                        <ul>
-                                            <li>Little Tina Coffee Shop</li>
-                                            <li>La Panaderia (Calle 8)</li>
-                                            <li>Soda del Barrio</li>
-                                            <li>Le Petite France</li>
-                                        </ul></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            </div>
-                        </div>
-                    </div>
-    <div class="flex information">
-        <div class="itinerary rounded">
-            <div class="flex itHead">
-                <h2>Itinerary: </h2>
-                <div>
-                    <button type="button" class="plus" onclick="addItinerary(), alert('Your items have been added.')">+</button>
-                    <button class="btn btn-outline-info"
-                        onclick="alert('This itinerary has been emailed to the email on your account. It will arrive within 20 minutes.')">Email
-                        Itinerary</button>
-                </div>
-            </div>
-            <ul>
-                <div>
-                    <li><span class="itDate">Monday, 9/23: Explore the capital</span>
-                        <ul>
-                            <li>9:00 am - 10:00 am: Grab breakfast at the panaderia and coffee at the cafe and eat it in the park</li>
-                            <li>10:00 am - 2:00 pm: Hop on the bus (stop 39) and head to the Mercado Central for shopping</li>
-                            <li>2:00 pm - 5:00 pm: Walk to the National Theater and see a play</li>
-                            <li>5:00 pm - 7:00 pm: Find a place downtown to grab some dinner and drinks</li>
-                            <li>7:00 pm: Hop on the bus and head back to the hotel to swim and hang out</li>
-                        </ul></li>
-                </div>
-                <div>
-                    <li><span class="itDate">Tuesday, 9/24: Isla Tortuga</span>
-                    <ul>
-                        <li>5:30 am: Arrive at Tortuga Island Tours lobby to depart for Isla Tortuga by bus</li>
-                        <li>7:45 am: Arrival to port town (Puntarenas)</li>
-                        <li>9:45 am: Arrival at Isla Tortuga (by boat)</li>
-                        <li>1:00 pm: Lunch at the island</li>
-                        <li>3:30 pm - 8:30 pm: Journey back to Tortuga Island Tours</li>
-                        <li>8:30 pm: Uber back to hotel</li>
-                    </ul></li>
-                </div>
-            </ul>
-        </div>
+    <div class="center">
+        <h2> Your Upcoming Trips: </h2>
+        <table class="table table-dark" style="width:fit-content; margin-left: auto; margin-right: auto;">
+            <thead>
+                <tr>
+                    <th>Destination </th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vacation in vacations %}
+                <tr>
+                    <td><a href="/trip/view/{{vacation.id}}">{{vacation.city}}, {{vacation.country}}</a></td>
+                    <td>{{vacation.date.strftime('%m/%d/%Y')}}</td>
+                    <td><a href="#">Edit</a> | <a href="/trip/delete/{{vacation.id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/trip/add" class="btn btn-outline-info">Add Another Trip</a>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/widgets.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='/js/displaytrip.js') }}"></script>
-    <script src=""></script>
-    <script>
-        window.onload = fetchWeather();
-    </script>
-   
 </body>
 
 </html>

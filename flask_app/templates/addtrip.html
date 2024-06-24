@@ -16,15 +16,11 @@
         <p class="text-danger">{{message}}</p>
         {% endfor %}
 
-        <form action="/trip/new" method="post" class="userForm">
+        <form onsubmit="addVacation(event)" id="newVacation">
             <div class="mb-3">
                 <label for="city" class="form-label">City:</label>
                 <input type="text" name="city" class="form-control">
             </div>
-            <!-- <div class="mb-3">
-                <label for="country" class="form-label">Country:</label>
-                <input type="text" name="country" class="form-control">
-            </div> -->
             <div class="mb-3">
                 <label for="country">Select your country: </label>
                 <select id = "country" name="country"></select>
@@ -35,7 +31,7 @@
                 <label for="date" class="form-label">Date of the Trip:</label>
                 <input type="date" name="date" id="date" class="form-control">
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <p>Would you like this trip to be public or private?</p>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="private" id="private" value="1">
@@ -45,10 +41,11 @@
                     <input class="form-check-input" type="radio" name="private" id="public" value="-1">
                     <label class="form-check-label" for="public">Public</label>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary">Add a Trip</button>
             <a href="/dashboard" class="btn btn-danger">Back</a>
         </form>
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/addtrip.js') }}"></script>
 </body>
 </html>
