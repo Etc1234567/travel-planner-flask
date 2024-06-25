@@ -49,6 +49,27 @@ CREATE TABLE IF NOT EXISTS `nomadnirvana`.`vacations` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `nomadnirvana`.`inspiration`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nomadnirvana`.`inspiration` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `link` TEXT NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `vacation_id` INT NOT NULL,
+  `vacation_user_id` INT NOT NULL,
+  `edited_link` TEXT NULL,
+  PRIMARY KEY (`id`, `vacation_id`, `vacation_user_id`),
+  INDEX `fk_inspiration_vacations1_idx` (`vacation_id` ASC, `vacation_user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_inspiration_vacations1`
+    FOREIGN KEY (`vacation_id` , `vacation_user_id`)
+    REFERENCES `nomadnirvana`.`vacations` (`id` , `user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

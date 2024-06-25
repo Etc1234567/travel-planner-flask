@@ -11,15 +11,17 @@
 
 <body>
     <div class="nav flex">
-        <h1 class="logo"><a href="#"> 🪷 Nomad Nirvana</a></h1>
+        <h1 class="logo"><a href="/dashboard"> 🪷 Nomad Nirvana</a></h1>
         <ul class="flex nav-items">
-            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)"><a href="#">Wishlist</a></li>
-            <li onmouseover="highlight(this)" onmouseout="removeHighlight(this)">
+            <li><a href="#">Wishlist</a></li>
+            <li>
                 <div class="dropdown">
                     <a class="btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Upcoming Trips</a>
                         <ul class="dropdown-menu dropdown-menu-dark" id="vacationList">
                             {% for vacation in vacations %}
+                                {% if vacation.user_id == logged_user.id %}
                                 <li><a class="dropdown-item" href="/trip/view/{{vacation.id}}">{{vacation.city}}, {{vacation.country}}</a></li>
+                                {% endif %}
                             {% endfor %}
                             <li><a class="dropdown-item" href="/trip/add">Add a Trip</a></li>
                         </ul>
@@ -68,11 +70,13 @@
             </thead>
             <tbody>
                 {% for vacation in vacations %}
+                    {% if vacation.user_id == logged_user.id %}
                 <tr>
                     <td><a href="/trip/view/{{vacation.id}}">{{vacation.city}}, {{vacation.country}}</a></td>
                     <td>{{vacation.date.strftime('%m/%d/%Y')}}</td>
-                    <td><a href="#">Edit</a> | <a href="/trip/delete/{{vacation.id}}">Delete</a></td>
+                    <td><a href="/trip/edit/{{vacation.id}}">Edit</a> | <a href="/trip/delete/{{vacation.id}}">Delete</a></td>
                 </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>

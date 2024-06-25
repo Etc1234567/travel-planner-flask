@@ -16,9 +16,11 @@ def render_dashboard():
     if "user_id" not in session:
         return redirect("/")
     
+    logged_user = user_model.User.get_by_id({"id": session['user_id']})
+    
     vacations = vacation_model.Vacation.get_all()
 
-    return render_template("dashboard.html", vacations=vacations)
+    return render_template("dashboard.html", vacations=vacations, logged_user=logged_user)
 
 @app.route('/register', methods=['POST'])
 def register():
